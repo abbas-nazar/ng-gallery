@@ -1,7 +1,11 @@
-<h3>Recent Photos<h3>
+<h3>{{title}}<h3>
 <div class="row">
+  <button class="btn btn-lg btn-info" [class.active]="filterBy=='all'" (click)="filterBy='all'">All</button>
+  <button class="btn btn-lg btn-info" [class.active]="filterBy=='games'" (click)="filterBy='games'">Games</button>
+  <button class="btn btn-lg btn-info" [class.active]="filterBy=='heroes'" (click)="filterBy='heroes'">Heroes</button>
+  <button class="btn btn-lg btn-info" [class.active]="filterBy=='others'" (click)="filterBy='others'">Others</button>
   <ul id="thumbnailList">
-    <li *ngFor="let image of images" >
+    <li *ngFor="let image of (images | filter : filterBy)" >
         <img src="{{image.url}}" class="tn" width="250" height="160">
     </li>
   </ul>
