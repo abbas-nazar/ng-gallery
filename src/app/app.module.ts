@@ -8,6 +8,24 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { ImageComponent } from './image/image.component';
 import { ImageService } from './image.service';
 import { FilterPipe } from './filter.pipe';
+import {RouterModule, Routes } from '@angular/router';
+
+  const appRoutes: Routes =
+[
+  {
+    path: 'gallery',
+    component: GalleryComponent
+  }
+  ,
+  {
+    path: 'image/:id',
+    component: ImageComponent
+  },
+  {
+    path: '', redirectTo: '/gallery', pathMatch: 'full'
+  }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +36,8 @@ import { FilterPipe } from './filter.pipe';
   ],
   imports: [
     BrowserModule,
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [ImageService],
   bootstrap: [AppComponent]
